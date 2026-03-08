@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Redynox</title>
+  <meta name="description" content="Get in touch with Redynox. Start a project, ask a question, or say hello." />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body class="contact-page">
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">REDYNOX<span class="logo-accent">.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-pill active-pill">Get Started →</a>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <section class="page-hero">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <span class="hero-badge">
+      <span class="pulse-dot"></span>
+      Let's Talk
+    </span>
+    <h1 class="page-hero-title">Start a <span class="gradient-text">Conversation</span></h1>
+    <p class="page-hero-sub">
+      Got a project in mind? A question? Just want to say hello?
+      We'd love to hear from you.
+    </p>
+  </section>
+
+  <!-- ═══ CONTACT BODY ═══ -->
+  <section class="contact-layout">
+
+    <!-- Left: Info -->
+    <div class="contact-left">
+      <span class="eyebrow">Reach Us</span>
+      <h2 class="section-title">We're <span class="gradient-text">Here</span> For You</h2>
+      <p class="contact-sub">
+        Whether you're ready to start or just exploring, drop us a message and
+        we'll respond within 24 hours.
+      </p>
+
+      <ul class="info-list">
+        <li class="info-row">
+          <span class="info-ico">📧</span>
+          <div>
+            <strong>Email</strong>
+            <p><a href="mailto:hello@redynox.dev">hello@redynox.dev</a></p>
+          </div>
+        </li>
+        <li class="info-row">
+          <span class="info-ico">📍</span>
+          <div>
+            <strong>Location</strong>
+            <p>Bengaluru, India (Remote-friendly)</p>
+          </div>
+        </li>
+        <li class="info-row">
+          <span class="info-ico">⏰</span>
+          <div>
+            <strong>Response Time</strong>
+            <p>Within 24 business hours</p>
+          </div>
+        </li>
+        <li class="info-row">
+          <span class="info-ico">💬</span>
+          <div>
+            <strong>Social</strong>
+            <p>@redynox on Twitter &amp; LinkedIn</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="faq">
+        <h4>Common Questions</h4>
+        <details class="faq-row">
+          <summary>How long does a typical project take?</summary>
+          <p>A landing page: 1–2 weeks. A full web app: 4–12 weeks depending on scope.</p>
+        </details>
+        <details class="faq-row">
+          <summary>Do you offer internship programs?</summary>
+          <p>Yes! We run structured tracks for web development interns. Use this form to apply.</p>
+        </details>
+        <details class="faq-row">
+          <summary>Can you work with existing codebases?</summary>
+          <p>Absolutely. We do audits, refactors, and feature additions on legacy projects.</p>
+        </details>
+      </div>
+    </div>
+
+    <!-- Right: Form (HTML/CSS only for Task 1) -->
+    <div class="form-card">
+      <h3 class="form-card-title">Send a Message</h3>
+      <p class="form-card-sub">Fill in the details below and we'll be in touch.</p>
+
+      <form id="contact-form" action="#" method="POST" novalidate>
+        <div class="f-group">
+          <label for="name">Full Name <span class="req">*</span></label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="f-input"
+            placeholder="e.g. Aryan Kapoor"
+            autocomplete="name"
+            required
+          />
+          <span class="err-msg" id="name-error"></span>
+        </div>
+
+        <div class="f-group">
+          <label for="email">Email Address <span class="req">*</span></label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="f-input"
+            placeholder="e.g. aryan@example.com"
+            autocomplete="email"
+            required
+          />
+          <span class="err-msg" id="email-error"></span>
+        </div>
+
+        <div class="f-group">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject" class="f-select">
+            <option value="">Select a topic...</option>
+            <option value="project">New Project Inquiry</option>
+            <option value="internship">Internship / Career</option>
+            <option value="support">Support / Maintenance</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="f-group">
+          <label for="message">Message <span class="req">*</span></label>
+          <textarea
+            id="message"
+            name="message"
+            class="f-textarea"
+            rows="5"
+            placeholder="Tell us about your project, idea, or question..."
+            required
+          ></textarea>
+          <div class="char-bar"><span id="char-current">0</span>/500 characters</div>
+          <span class="err-msg" id="message-error"></span>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          Send Message →
+        </button>
+
+        <p class="form-note">
+          By submitting, you agree to our privacy policy. We never share your data.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ═══ DATA FLOW EXPLAINER ═══ -->
+  <section class="data-flow-section">
+    <span class="eyebrow">Behind the Scenes</span>
+    <h2 class="section-title">How Your Data <span class="gradient-text">Travels</span></h2>
+    <p class="section-body">
+      A visual peek at the client-server interaction powering this form.
+    </p>
+
+    <div class="flow-row">
+      <div class="flow-node">
+        <div class="fn-icon">🧑‍💻</div>
+        <div class="fn-label">User Input</div>
+        <div class="fn-desc">You fill the form on the client (browser).</div>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-node">
+        <div class="fn-icon">✅</div>
+        <div class="fn-label">JS Validation</div>
+        <div class="fn-desc">JavaScript checks data before any network call.</div>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-node">
+        <div class="fn-icon">📡</div>
+        <div class="fn-label">HTTP POST</div>
+        <div class="fn-desc">Data is serialized and sent to the server endpoint.</div>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-node">
+        <div class="fn-icon">🖥️</div>
+        <div class="fn-label">Server Processing</div>
+        <div class="fn-desc">Server validates, stores data, and sends a confirmation.</div>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-node">
+        <div class="fn-icon">🎉</div>
+        <div class="fn-label">Response</div>
+        <div class="fn-desc">A JSON response is returned; client shows success.</div>
+      </div>
+    </div>
+
+    <div class="methods-grid">
+      <div class="method-card get">
+        <span class="m-badge">GET</span>
+        <h4>GET Method</h4>
+        <p>
+          Sends data via URL parameters. Ideal for search queries and read-only actions.
+          Data is visible in the browser URL — never use for sensitive information.
+        </p>
+        <code>GET /search?query=html&amp;page=1</code>
+      </div>
+      <div class="method-card post">
+        <span class="m-badge">POST</span>
+        <h4>POST Method</h4>
+        <p>
+          Sends data in the request body, hidden from the URL. Used for form submissions,
+          login, and any action that creates or modifies data on the server.
+        </p>
+        <code>body: { name, email, message }</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="f-brand">
+        <span class="logo">REDYNOX<span class="logo-accent">.</span></span>
+        <p>Crafting the web, one pixel at a time.</p>
+      </div>
+      <div class="f-col">
+        <span class="f-col-head">Navigate</span>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="f-col">
+        <span class="f-col-head">Connect</span>
+        <a href="#">Twitter / X</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Redynox. All rights reserved.</span>
+      <span>Built with ♥ &amp; clean code.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

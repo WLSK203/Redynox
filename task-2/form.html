@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 2 — Contact Form with JS Validation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page-shell">
+
+    <!-- Left panel: info + GET vs POST -->
+    <aside class="info-panel">
+      <div class="panel-logo">RDX<span>.</span></div>
+
+      <div class="panel-block">
+        <p class="panel-label">Task 2 / Internship</p>
+        <h1 class="panel-title">JavaScript Form<br />Validation</h1>
+        <p class="panel-sub">
+          Full client-side validation with real-time feedback, error states,
+          character counting, and dynamic success output.
+        </p>
+      </div>
+
+      <div class="panel-block">
+        <p class="panel-label">Concepts Demonstrated</p>
+        <ul class="concept-list">
+          <li class="concept-item">
+            <span class="c-dot cyan"></span>
+            <div>
+              <strong>Regex Validation</strong>
+              <span>Name, email, message rules</span>
+            </div>
+          </li>
+          <li class="concept-item">
+            <span class="c-dot magenta"></span>
+            <div>
+              <strong>Live Error States</strong>
+              <span>Instant feedback on blur &amp; input</span>
+            </div>
+          </li>
+          <li class="concept-item">
+            <span class="c-dot lime"></span>
+            <div>
+              <strong>Async Submission</strong>
+              <span>Simulated POST with loading state</span>
+            </div>
+          </li>
+          <li class="concept-item">
+            <span class="c-dot amber"></span>
+            <div>
+              <strong>Dynamic Output</strong>
+              <span>Renders submitted data to the UI</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- GET vs POST explainer -->
+      <div class="panel-block">
+        <p class="panel-label">GET vs POST</p>
+
+        <div class="method-chip get-chip">
+          <span class="m-tag">GET</span>
+          <div>
+            <strong>Read-only. Data in URL.</strong>
+            <code>/search?q=redynox</code>
+          </div>
+        </div>
+
+        <div class="method-chip post-chip">
+          <span class="m-tag">POST</span>
+          <div>
+            <strong>Write. Data in body.</strong>
+            <code>body: &#123; name, email &#125;</code>
+          </div>
+        </div>
+
+        <p class="method-note">
+          Forms that submit sensitive data (logins, contact info) must always
+          use <strong>POST</strong> — data never appears in the browser URL.
+        </p>
+      </div>
+
+      <div class="panel-footer">
+        <span>Redynox Web Development Internship</span>
+        <span>HTML5 · CSS3 · JavaScript</span>
+      </div>
+    </aside>
+
+    <!-- Right panel: the form -->
+    <main class="form-panel">
+      <div class="form-shell">
+
+        <!-- Success overlay -->
+        <div class="success-overlay hidden" id="success-overlay">
+          <div class="success-inner">
+            <div class="s-ring">
+              <span class="s-check">✓</span>
+            </div>
+            <h2 class="s-title">Message Sent!</h2>
+            <p class="s-sub" id="s-sub">Thanks <strong id="s-name">there</strong>! We've received your message and will reply within 24 hours.</p>
+
+            <div class="s-data" id="s-data"></div>
+
+            <button class="btn-reset" id="btn-reset">
+              ← Send another message
+            </button>
+          </div>
+        </div>
+
+        <!-- Header -->
+        <div class="form-header">
+          <h2 class="form-title">Send a Message</h2>
+          <p class="form-subtitle">All fields marked <span class="req">*</span> are required.</p>
+        </div>
+
+        <!-- Form -->
+        <form id="contact-form" novalidate>
+
+          <!-- Name -->
+          <div class="fg" id="fg-name">
+            <label class="fl" for="name">
+              Full Name <span class="req">*</span>
+            </label>
+            <div class="fi-wrap">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="fi"
+                placeholder="e.g. Aryan Kapoor"
+                autocomplete="name"
+              />
+              <span class="fi-status" id="s-name-icon" aria-hidden="true"></span>
+            </div>
+            <span class="fe" id="name-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Email -->
+          <div class="fg" id="fg-email">
+            <label class="fl" for="email">
+              Email Address <span class="req">*</span>
+            </label>
+            <div class="fi-wrap">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="fi"
+                placeholder="e.g. aryan@example.com"
+                autocomplete="email"
+              />
+              <span class="fi-status" id="s-email-icon" aria-hidden="true"></span>
+            </div>
+            <span class="fe" id="email-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Subject -->
+          <div class="fg">
+            <label class="fl" for="subject">Subject</label>
+            <div class="fi-wrap">
+              <select id="subject" name="subject" class="fi fs">
+                <option value="">Select a topic...</option>
+                <option value="project">New Project Inquiry</option>
+                <option value="internship">Internship / Career</option>
+                <option value="support">Support / Maintenance</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="fi-caret">▾</span>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="fg" id="fg-message">
+            <label class="fl" for="message">
+              Message <span class="req">*</span>
+            </label>
+            <div class="fi-wrap">
+              <textarea
+                id="message"
+                name="message"
+                class="fi ft"
+                rows="5"
+                placeholder="Tell us about your project, idea, or question..."
+              ></textarea>
+            </div>
+            <div class="f-meta">
+              <span class="fe" id="message-error" role="alert" aria-live="polite"></span>
+              <span class="char-count">
+                <span id="char-now">0</span><span class="char-max">/500</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn-submit" id="btn-submit">
+            <span class="btn-text">Send Message →</span>
+            <span class="btn-loading hidden" aria-hidden="true">
+              <span class="spinner"></span> Sending…
+            </span>
+          </button>
+
+          <p class="f-note">
+            This form demonstrates <strong>POST</strong> — data is sent in the request body,
+            not the URL. Open DevTools → Console to see the payload log.
+          </p>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
