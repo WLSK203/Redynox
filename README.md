@@ -58,4 +58,4 @@ To view any of the tasks locally:
 
 ---
 
-_Crafted with ♥ & clean code for the Redynox Web Development Internship._
+
